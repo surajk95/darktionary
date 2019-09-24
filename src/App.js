@@ -6,6 +6,7 @@ import './App.css';
 class App extends React.Component {
   state = {
     searchTerm: '',
+    result: '',
   }
   componentDidMount() {
     //console.log(Dictionary['DIPLOBLASTIC']);
@@ -16,16 +17,21 @@ class App extends React.Component {
 
   }
 
-  handleSearch = async (event) => {
+  handleSearch = (event) => {
   event.preventDefault();
   let searchTerm = this.state.searchTerm;
-  try {
-    const Dictionary = await import(`./dictionary/${searchTerm[0].toLowerCase()}.json`);
-    console.log(`search term, result`, searchTerm, Dictionary[searchTerm]);
-  }
-  catch {
-    console.log('Error');
-  }
+  //const Dictionary =  import(`./dictionary/${searchTerm[0].toLowerCase()}.json`);
+
+  import(`./dictionary/${searchTerm[0].toLowerCase()}.json`)
+      .then(( Dictionary ) => {
+        // Use dictionary
+        console.log(Dictionary.default[searchTerm]);
+        this.setState({ result: Dictionary.default[searchTerm] });
+      })
+      .catch(err => {
+        // Handle failure
+        console.log(`error`, err);
+      });
 }
 
   render() {
@@ -44,6 +50,12 @@ class App extends React.Component {
             Search
           </button>
         </form>
+        <>
+          {
+            (this.state.result !== '') &&
+            this.state.result
+          }
+        </>
       </div>
     );
   }
