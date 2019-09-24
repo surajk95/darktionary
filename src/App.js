@@ -1,26 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//import Dictionary from './dictionary.json';
+
+class App extends React.Component {
+  state = {
+    searchTerm: '',
+  }
+  componentDidMount() {
+    //console.log(Dictionary['DIPLOBLASTIC']);
+  }
+
+  handleChange = (event) => {
+    this.setState({ searchTerm: event.target.value });
+
+  }
+
+  handleSearch = async (event) => {
+  event.preventDefault();
+  let searchTerm = this.state.searchTerm;
+  try {
+    const Dictionary = await import(`./dictionary/${searchTerm[0].toLowerCase()}.json`);
+    console.log(`search term, result`, searchTerm, Dictionary[searchTerm]);
+  }
+  catch {
+    console.log('Error');
+  }
+}
+
+  render() {
+    return (
+      <div className="App">
+        Darktionary
+
+        <form onSubmit={this.handleSearch}>
+          <input
+            type="text"
+            placeholder="Search here"
+            onChange={event=>{this.handleChange(event)}}
+            value={this.state.searchTerm}
+          ></input>
+          <button type="submit" onClick={this.handlesearch}>
+            Search
+          </button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default App;
