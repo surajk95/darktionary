@@ -19,13 +19,13 @@ class App extends React.Component {
 
   handleSearch = (event) => {
   event.preventDefault();
-  let searchTerm = this.state.searchTerm;
+  let searchTerm = this.state.searchTerm.toLowerCase();
   //const Dictionary =  import(`./dictionary/${searchTerm[0].toLowerCase()}.json`);
 
-  import(`./dictionary/${searchTerm[0].toLowerCase()}.json`)
+  import(`./dictionary/${searchTerm[0]}.json`)
       .then(( Dictionary ) => {
         // Use dictionary
-        console.log(Dictionary.default[searchTerm]);
+        //console.log(Dictionary.default[searchTerm]);
         this.setState({ result: Dictionary.default[searchTerm] });
       })
       .catch(err => {
