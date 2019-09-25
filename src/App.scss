@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway:300|Muli&display=swap');
+
+.App {
+  text-align: center;
+  //font-family: 'Raleway', sans-serif;
+}
+
+$theme1-color-1: #ff2f60;
+$theme1-color-2: #ff49bd;
+
+.searchForm {
+  padding: 30px 30px;
+  display: flex;
+  justify-content: center;
+  background-color: inherit;
+  .searchInput {
+    font-family: 'Muli', sans-serif;
+    line-height: 1.2;
+    background-color: inherit;
+    color: white;
+    outline: none;
+    border: none;
+    border-bottom: solid 1px #36daff;
+    font-size: 1.5em;
+    padding: 5px 8px;
+    &::placeholder {
+      background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  .searchButton {
+    background-color: inherit;
+    border: 0;
+    outline: 0;
+    .searchIcon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.searchResults {
+  padding: 20px 50px;
+  text-align: left;
+  line-height: 2;
+  .resultTitle {
+    font-size: 2em;
+    background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .titleUnderline {
+    background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
+    width: 200px;
+    height: 5px;
+    margin: 5px 0 20px 0;
+  }
+}
+
+.errorMessage {
+  background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2em;
+}
+
+
+@media (max-width: 425px) {
+  .searchForm {
+    position: absolute;
+    z-index: 3;
+    bottom: 30px;
+  }
+}
+
