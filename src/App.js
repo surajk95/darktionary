@@ -5,6 +5,7 @@ import './App.scss';
 
 class App extends React.Component {
   state = {
+    landing: true,
     searchTerm: '',
     result: '',
     resultTitle: '',
@@ -23,7 +24,7 @@ class App extends React.Component {
   handleSearch = (event) => {
   event.preventDefault();
   let searchTerm = this.state.searchTerm.toLowerCase();
-  this.setState({ resultTitle: searchTerm, result: '' });
+  this.setState({ landing: false, resultTitle: searchTerm, result: '' });
 
   import(`./dictionary/${searchTerm[0]}.json`)
       .then(( Dictionary ) => {
@@ -46,7 +47,7 @@ class App extends React.Component {
     return (
       <div className="App">
           <form onSubmit={this.handleSearch}>
-            <div className="searchForm" >
+            <div className={this.state.landing ? "searchForm landing" : "searchForm"} >
               <input
                 className="searchInput"
                 type="text"
