@@ -12,7 +12,7 @@ $theme1-color-1: #ff2f60;
 $theme1-color-2: #ff49bd;
 
 .searchForm {
-  padding: 30px 30px;
+  padding: 40px 30px 0 30px;
   display: flex;
   justify-content: center;
   background-color: inherit;
@@ -60,8 +60,30 @@ $theme1-color-2: #ff49bd;
     height: 5px;
     margin: 5px 0 20px 0;
   }
-  .inlineItem {
-    padding: 0 20px;
+  .inlineContainer {
+    padding: 10px 0;
+    .inlineHeading {
+      padding: 5px 10px;
+      background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
+    }
+    .inlineItem {
+      padding: 0 20px;
+    }
+  }
+  .definitionHeading {
+    text-decoration: underline;
+  }
+
+  .wordType {
+    font-size: 0.8em;
+    background-color: #1b1b1b;
+    font-style: italic;
+    padding: 2px 5px;
+    color: orange;
+    margin-right: 15px;
+  }
+  .wordDefinition {
+    font-weight: 300;
   }
 }
 
@@ -78,6 +100,7 @@ $theme1-color-2: #ff49bd;
     position: absolute;
     z-index: 3;
     bottom: 30px;
+    padding: 0;
   }
 }
 

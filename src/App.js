@@ -21,10 +21,22 @@ class App extends React.Component {
 
   }
 
+  isPartofSpeech = (word) => {
+    let partsOfSpeech = [
+      "noun",
+      "verb",
+      "adjective",
+    ];
+    if(partsOfSpeech.indexOf(word.toLowerCase()) > -1)
+      return 'wordType'
+    else
+      return 'wordDefinition'
+  }
+
   handleSearch = (event) => {
   event.preventDefault();
   let searchTerm = this.state.searchTerm.toUpperCase();
-  this.setState({ landing: false, resultTitle: searchTerm, result: '' });
+  this.setState({ landing: false, resultTitle: searchTerm, result: {} });
 
   import(`./dictionary/D${searchTerm[0]}.json`)
       .then(( Dictionary ) => {
@@ -33,13 +45,13 @@ class App extends React.Component {
           this.setState({ showError: true });
         }
         else {
-          console.log(result);
+          //console.log(result);
           this.setState({ resultTitle: searchTerm, result, showError: false, searchTerm: '' });
         } 
       })
       .catch(err => {
         // Handle failure
-        console.log(`error`, err);
+        //console.log(`error`, err);
         this.setState({ showError: true })
       });
 }
@@ -63,43 +75,18 @@ class App extends React.Component {
             </div>
           </form>
           {
-           (this.state.result) &&
+           (typeof this.state.result === 'object' && Object.keys(this.state.result).length !== 0) &&
             <div className="searchResults">
                 <div className="resultTitle">
                   {this.state.resultTitle}
                 </div>
+                <div className="titleUnderline">
+                </div>
                 <div className="searchContent">
                 {
-                  (this.state.result.MEANINGS && Object.values(this.state.result.MEANINGS) && Object.values(this.state.result.MEANINGS).length>0) &&
-                  <>
-                      <div className="titleUnderline">
-                      </div>
-                      {
-                        Object.values(this.state.result.MEANINGS).map((item, index) => {
-                          console.log(item);
-                          return(
-                            <div className="" key={index}>
-                              {
-                                item.length>0 &&
-                                item.map((deeperItem, deeperIndex) => {
-                                  return (
-                                    typeof deeperItem === 'string' &&
-                                    <div key={deeperIndex}>
-                                      {deeperItem}
-                                    </div>
-                                  )
-                                })
-                              }
-                            </div>
-                          )
-                        })
-                      }
-                  </>
-                }
-                {
                   (this.state.result.SYNONYMS && this.state.result.SYNONYMS.length>0) &&
-                  <>
-                    <div> Synonyms: </div>
+                  <div className="inlineContainer">
+                    <span className="inlineHeading"> Synonyms </span>
                       {
                         this.state.result.SYNONYMS.map((item, index) => {
                         return(
@@ -107,18 +94,43 @@ class App extends React.Component {
                         )
                       })
                       }
-                  </>
+                  </div>
                 }
                 {
                   (this.state.result.ANTONYMS && this.state.result.ANTONYMS.length>0) &&
-                  <>
-                    <div> Antonyms: </div>
+                  <div className="inlineContainer">
+                    <span className="inlineHeading"> Antonyms </span>
                       {
                         this.state.result.ANTONYMS.map((item, index) => {
                         return(
                           <span className="inlineItem" key={index}>{item}</span>
                         )
                       })
+                      }
+                  </div>
+                }
+                {
+                  (this.state.result.MEANINGS && Object.values(this.state.result.MEANINGS) && Object.values(this.state.result.MEANINGS).length>0) &&
+                  <>
+                      <span className="definitionHeading"> Definition </span>
+                      {
+                        Object.values(this.state.result.MEANINGS).map((item, index) => {
+                          return(
+                            <div key={index}>
+                              {
+                                item.length>0 &&
+                                item.map((deeperItem, deeperIndex) => {
+                                  return (
+                                    typeof deeperItem === 'string' &&
+                                    <span key={deeperIndex} className={this.isPartofSpeech(deeperItem)}> 
+                                      {deeperItem}
+                                    </span>
+                                  )
+                                })
+                              }
+                            </div>
+                          )
+                        })
                       }
                   </>
                 }
