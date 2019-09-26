@@ -16,6 +16,7 @@ $theme1-color-2: #ff49bd;
   display: flex;
   justify-content: center;
   background-color: inherit;
+  transition: margin-top 0.1s;
   .searchInput {
     font-family: 'Muli', sans-serif;
     line-height: 1.2;
@@ -58,6 +59,9 @@ $theme1-color-2: #ff49bd;
     width: 200px;
     height: 5px;
     margin: 5px 0 20px 0;
+  }
+  .inlineItem {
+    padding: 0 20px;
   }
 }
 
