@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.scss';
 
-//import Dictionary from './dictionary.json';
+import Definitions from './components/definitions.jsx';
+import Synonyms from './components/synonyms.jsx';
+import Antonyms from './components/antonyms.jsx';
 
 class App extends React.Component {
   state = {
@@ -11,9 +13,6 @@ class App extends React.Component {
     resultTitle: '',
     errorMessage: 'Nope, nothing found. Try another word.',
     showError: false,
-  }
-  componentDidMount() {
-    
   }
 
   handleChange = (event) => {
@@ -92,66 +91,24 @@ class App extends React.Component {
                 <div className="searchContent">
                 {
                   (this.state.result.SYNONYMS && this.state.result.SYNONYMS.length>0) &&
-                  <div className="inlineContainer">
-                    <span className="inlineHeading"> Synonyms </span>
-                      {
-                        this.state.result.SYNONYMS.map((item, index) => {
-                        return(
-                          <span
-                            className="inlineItem"
-                            key={index}
-                            onClick={()=>this.searchForWord(item)}
-                          >
-                            {item}
-                          </span>
-                        )
-                      })
-                      }
-                  </div>
+                  <Synonyms
+                    synonyms={this.state.result.SYNONYMS}
+                    searchForWord={this.searchForWord}
+                  />
                 }
                 {
                   (this.state.result.ANTONYMS && this.state.result.ANTONYMS.length>0) &&
-                  <div className="inlineContainer">
-                    <span className="inlineHeading"> Antonyms </span>
-                      {
-                        this.state.result.ANTONYMS.map((item, index) => {
-                        return(
-                          <span
-                            className="inlineItem"
-                            key={index}
-                            onClick={()=>this.searchForWord(item)}
-                          >
-                            {item}
-                          </span>
-                        )
-                      })
-                      }
-                  </div>
+                  <Antonyms
+                    antonyms={this.state.result.ANTONYMS}
+                    searchForWord={this.searchForWord}
+                  />
                 }
                 {
                   (this.state.result.MEANINGS && Object.values(this.state.result.MEANINGS) && Object.values(this.state.result.MEANINGS).length>0) &&
-                  <>
-                      <span className="definitionHeading"> Definition </span>
-                      {
-                        Object.values(this.state.result.MEANINGS).map((item, index) => {
-                          return(
-                            <div key={index}>
-                              {
-                                item.length>0 &&
-                                item.map((deeperItem, deeperIndex) => {
-                                  return (
-                                    typeof deeperItem === 'string' &&
-                                    <span key={deeperIndex} className={this.isPartofSpeech(deeperItem)}> 
-                                      {deeperItem}
-                                    </span>
-                                  )
-                                })
-                              }
-                            </div>
-                          )
-                        })
-                      }
-                  </>
+                  <Definitions
+                    meanings={this.state.result.MEANINGS}
+                    isPartofSpeech={this.isPartofSpeech}
+                  />
                 }
                 </div>
             </div>

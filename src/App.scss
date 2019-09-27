@@ -65,6 +65,7 @@ $theme1-color-2: #ff49bd;
     padding: 10px 0;
     .inlineHeading {
       padding: 5px 10px;
+      margin: 0 20px 0 0;
       background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
     }
     .inlineItem {
