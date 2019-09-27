@@ -34,27 +34,34 @@ class App extends React.Component {
   }
 
   handleSearch = (event) => {
-  event.preventDefault();
-  let searchTerm = this.state.searchTerm.toUpperCase();
-  this.setState({ landing: false, resultTitle: searchTerm, result: {} });
+    if(event)
+      event.preventDefault();
+    let searchTerm = this.state.searchTerm.toUpperCase();
+    this.setState({ landing: false, resultTitle: searchTerm, result: {} });
 
-  import(`./dictionary/D${searchTerm[0]}.json`)
-      .then(( Dictionary ) => {
-        let result = Dictionary.default[searchTerm];
-        if(typeof result === 'undefined'){
-          this.setState({ showError: true });
-        }
-        else {
-          //console.log(result);
-          this.setState({ resultTitle: searchTerm, result, showError: false, searchTerm: '' });
-        } 
-      })
-      .catch(err => {
-        // Handle failure
-        //console.log(`error`, err);
-        this.setState({ showError: true })
-      });
-}
+    import(`./dictionary/D${searchTerm[0]}.json`)
+        .then(( Dictionary ) => {
+          let result = Dictionary.default[searchTerm];
+          if(typeof result === 'undefined'){
+            this.setState({ showError: true });
+          }
+          else {
+            //console.log(result);
+            this.setState({ resultTitle: searchTerm, result, showError: false, searchTerm: '' });
+          } 
+        })
+        .catch(err => {
+          // Handle failure
+          //console.log(`error`, err);
+          this.setState({ showError: true })
+        });
+  }
+
+  searchForWord = (word) => {
+    this.setState({ searchTerm: word }, ()=>{
+      this.handleSearch();
+    })
+  }
 
   render() {
     return (
@@ -90,7 +97,13 @@ class App extends React.Component {
                       {
                         this.state.result.SYNONYMS.map((item, index) => {
                         return(
-                          <span className="inlineItem" key={index}>{item}</span>
+                          <span
+                            className="inlineItem"
+                            key={index}
+                            onClick={()=>this.searchForWord(item)}
+                          >
+                            {item}
+                          </span>
                         )
                       })
                       }
@@ -103,7 +116,13 @@ class App extends React.Component {
                       {
                         this.state.result.ANTONYMS.map((item, index) => {
                         return(
-                          <span className="inlineItem" key={index}>{item}</span>
+                          <span
+                            className="inlineItem"
+                            key={index}
+                            onClick={()=>this.searchForWord(item)}
+                          >
+                            {item}
+                          </span>
                         )
                       })
                       }

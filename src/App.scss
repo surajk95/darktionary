@@ -45,6 +45,7 @@ $theme1-color-2: #ff49bd;
 }
 
 .searchResults {
+  background-color: black;
   padding: 20px 50px;
   text-align: left;
   line-height: 2;
@@ -67,11 +68,16 @@ $theme1-color-2: #ff49bd;
       background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
     }
     .inlineItem {
-      padding: 0 20px;
+      padding: 5px 7px;
+      cursor: pointer;
+      margin: 0 10px;
+      border-radius: 2px;
+      background: linear-gradient(to right, #212121 0%, #2a2a2a 100%);
     }
   }
   .definitionHeading {
-    text-decoration: underline;
+    border-bottom: solid 2px pink;
+    padding-bottom: 5px;
   }
 
   .wordType {
