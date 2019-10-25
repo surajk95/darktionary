@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway:300|Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway:300|Muli|Nothing+You+Could+Do&display=swap');
 
 .App {
   text-align: center;
@@ -6,10 +6,21 @@
   .landing {
     margin-top: 200px;
   }
+  .logoContainer {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: 'Nothing you could do', sans-serif;
+    }
+  }
 }
 
-$theme1-color-1: #ff2f60;
-$theme1-color-2: #ff49bd;
+$theme1-color-1: #13f0fc;
+$theme1-color-2: #6528ff;
 
 .searchForm {
   padding: 40px 30px 0 30px;
@@ -18,20 +29,20 @@ $theme1-color-2: #ff49bd;
   background-color: inherit;
   transition: margin-top 0.1s;
   .searchInput {
-    font-family: 'Muli', sans-serif;
+    font-family: 'Raleway', sans-serif;
     line-height: 1.2;
     background-color: inherit;
     color: white;
     outline: none;
     border: none;
-    border-bottom: solid 1px #36daff;
+    border-bottom: solid 1px #6528ff;
     font-size: 1.5em;
     padding: 5px 8px;
-    &::placeholder {
-      background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    // &::placeholder {
+    //   background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
+    //   -webkit-background-clip: text;
+    //   -webkit-text-fill-color: transparent;
+    // }
   }
   .searchButton {
     background-color: inherit;
@@ -45,13 +56,12 @@ $theme1-color-2: #ff49bd;
 }
 
 .searchResults {
-  background-color: black;
   padding: 20px 50px;
   text-align: left;
   line-height: 2;
   .resultTitle {
     font-size: 2em;
-    background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
+    background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 40%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -66,7 +76,7 @@ $theme1-color-2: #ff49bd;
     .inlineHeading {
       padding: 5px 10px;
       margin: 0 20px 0 0;
-      background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 100%);
+      background: linear-gradient(to right, #5816f6 0%, $theme1-color-2 50%);
     }
     .inlineItem {
       padding: 5px 7px;
@@ -99,15 +109,31 @@ $theme1-color-2: #ff49bd;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 2em;
+    margin-top: 50px;
 }
 
 
 @media (max-width: 425px) {
+  body {
+    height: 101%;
+  }
   .searchForm {
     position: absolute;
     z-index: 3;
     bottom: 30px;
     padding: 0;
+    width: 100%;
+  }
+  .searchResults {
+    height: calc(100vh - 150px);
+    overflow-y: scroll;
+  }
+  .inlineContainer {
+    overflow-x: scroll;
+    white-space: nowrap;
+    .inlineHeading {
+      margin-bottom: 30px !important;
+    }
   }
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import SearchIcon from './search-icon.png';
 
 import Definitions from './components/definitions.jsx';
 import Synonyms from './components/synonyms.jsx';
@@ -65,6 +66,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+          <div className="logoContainer">
+            <a href="https://github.com/surajk95/darktionary" target="_blank" rel="noopener noreferrer">
+              Darktionary
+            </a>
+          </div>
           <form onSubmit={this.handleSearch}>
             <div className={this.state.landing ? "searchForm landing" : "searchForm"} >
               <input
@@ -76,7 +82,7 @@ class App extends React.Component {
                 autoFocus
               ></input>
               <button className="searchButton" type="submit" onClick={this.handlesearch}>
-                <img className="searchIcon" alt="search-icon" src="https://icon-library.net/images/white-search-icon-transparent-background/white-search-icon-transparent-background-1.jpg" />
+                <img className="searchIcon" alt="search-icon" src={SearchIcon} />
               </button>
             </div>
           </form>
