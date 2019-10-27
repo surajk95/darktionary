@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0b14b294b6f15d9adc1e0496824d19d3",
+    "revision": "b39fb57987024af770453b6c49bb58f2",
     "url": "/darktionary/index.html"
   },
   {
