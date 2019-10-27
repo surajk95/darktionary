@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/darktionary/static/css/main.3db47ef2.chunk.css",
+    "main.css": "/darktionary/static/css/main.c43e69d6.chunk.css",
     "main.js": "/darktionary/static/js/main.0cbc0885.chunk.js",
     "main.js.map": "/darktionary/static/js/main.0cbc0885.chunk.js.map",
     "runtime-main.js": "/darktionary/static/js/runtime-main.41d8e5b3.js",
@@ -60,9 +60,9 @@
     "static/js/28.57355bea.chunk.js": "/darktionary/static/js/28.57355bea.chunk.js",
     "static/js/28.57355bea.chunk.js.map": "/darktionary/static/js/28.57355bea.chunk.js.map",
     "index.html": "/darktionary/index.html",
-    "precache-manifest.239167cd8a6311ae8cfb7fab5689a2d2.js": "/darktionary/precache-manifest.239167cd8a6311ae8cfb7fab5689a2d2.js",
+    "precache-manifest.3a7398b5b0e9b06c3bdbfccb50451cca.js": "/darktionary/precache-manifest.3a7398b5b0e9b06c3bdbfccb50451cca.js",
     "service-worker.js": "/darktionary/service-worker.js",
-    "static/css/main.3db47ef2.chunk.css.map": "/darktionary/static/css/main.3db47ef2.chunk.css.map",
+    "static/css/main.c43e69d6.chunk.css.map": "/darktionary/static/css/main.c43e69d6.chunk.css.map",
     "static/media/search-icon.png": "/darktionary/static/media/search-icon.625322a5.png"
   }
 }
