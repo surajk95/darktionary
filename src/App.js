@@ -36,17 +36,16 @@ class App extends React.Component {
   handleSearch = (event) => {
     if(event)
       event.preventDefault();
-    let searchTerm = this.state.searchTerm.toUpperCase();
+    let searchTerm = this.state.searchTerm.toLowerCase();
     this.setState({ landing: false, resultTitle: searchTerm, result: {} });
-
-    import(`./dictionary/D${searchTerm[0]}.json`)
+    import(`./dictionary/${searchTerm[0]}.json`)
         .then(( Dictionary ) => {
           let result = Dictionary.default[searchTerm];
           if(typeof result === 'undefined'){
             this.setState({ showError: true });
           }
           else {
-            //console.log(result);
+            console.log(result);
             this.setState({ resultTitle: searchTerm, result, showError: false, searchTerm: '' });
           } 
         })
