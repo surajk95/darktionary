@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ddc428f92304ca627bc800a3fc831c7c",
+    "revision": "c5c2934f6b4a395f1c13fc5af4b19178",
     "url": "/darktionary/index.html"
   },
   {
-    "revision": "9a7fafb63632e9132c45",
-    "url": "/darktionary/static/css/main.711468b0.chunk.css"
+    "revision": "f0daac154dc83381b7ce",
+    "url": "/darktionary/static/css/main.97f7d590.chunk.css"
   },
   {
     "revision": "459271d7050b50189056",
@@ -120,8 +120,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/darktionary/static/js/9.e9d5a794.chunk.js"
   },
   {
-    "revision": "9a7fafb63632e9132c45",
-    "url": "/darktionary/static/js/main.e83c1098.chunk.js"
+    "revision": "f0daac154dc83381b7ce",
+    "url": "/darktionary/static/js/main.ff4f6fc4.chunk.js"
   },
   {
     "revision": "23393e7858442b65a837",
