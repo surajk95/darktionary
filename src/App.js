@@ -4,7 +4,7 @@ import SearchIcon from './search-icon.png';
 
 import Definitions from './components/definitions.jsx';
 import Synonyms from './components/synonyms.jsx';
-import Antonyms from './components/antonyms.jsx';
+//import Antonyms from './components/antonyms.jsx';
 
 class App extends React.Component {
   state = {
