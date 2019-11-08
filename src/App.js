@@ -78,8 +78,10 @@ class App extends React.Component {
     return (
       <div className="App">
           <div className="logoContainer">
-            <a href="https://github.com/surajk95/darktionary" target="_blank" rel="noopener noreferrer">
-              Darktionary
+            <a className="logoText" href="https://github.com/surajk95/darktionary" target="_blank" rel="noopener noreferrer">
+              Dictionary,<br/>
+              but<br/>
+              Dark.
             </a>
           </div>
           <form onSubmit={this.handleSearch}>

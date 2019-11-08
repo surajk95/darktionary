@@ -11,8 +11,9 @@
     right: 20px;
     top: 20px;
     cursor: pointer;
-    a {
+    a, .logoText {
       text-decoration: none;
+      text-align: center;
       color: white;
       font-family: 'Nothing you could do', sans-serif;
     }
@@ -35,7 +36,7 @@ $theme1-color-2: #6528ff;
     color: white;
     outline: none;
     border: none;
-    border-bottom: solid 1px #6528ff;
+    border-bottom: solid 1px #7ce1fa;
     font-size: 1.5em;
     padding: 5px 8px;
     // &::placeholder {
@@ -61,7 +62,7 @@ $theme1-color-2: #6528ff;
   line-height: 2;
   .resultTitle {
     font-size: 2em;
-    background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 40%);
+    background: linear-gradient(to right, $theme1-color-1 0%, $theme1-color-2 30%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -109,11 +110,17 @@ $theme1-color-2: #6528ff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 2em;
-    margin-top: 50px;
+    margin-top: 150px;
 }
 
 
-@media (max-width: 425px) {
+@media (max-width: 480px) {
+  .landing {
+    bottom: 40vh !important;
+    //background: linear-gradient(135deg, #0b1324 0%, #1d272c 100%);
+    padding: 25px 0 !important;
+    box-sizing: border-box;
+  }
   .searchForm {
     position: absolute;
     z-index: 3;
@@ -122,7 +129,7 @@ $theme1-color-2: #6528ff;
     width: 100%;
   }
   .searchResults {
-    height: calc(100vh - 150px);
+    height: calc(100vh - 200px);
     overflow-y: scroll;
   }
   .inlineContainer {
