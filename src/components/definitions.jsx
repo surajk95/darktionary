@@ -6,22 +6,18 @@ export default function Definitions(props) {
       <span className="definitionHeading">
           Definition 
       </span>
-      {Object.values(props.meanings).map((item, index) => {
+      {props.meanings.map((item, index) => {
         return (
           <div key={index}>
-            {item.length > 0 &&
-              item.map((deeperItem, deeperIndex) => {
-                return (
-                  typeof deeperItem === "string" && (
-                    <span
-                      key={deeperIndex}
-                      className={props.isPartofSpeech(deeperItem)}
-                    >
-                      {deeperItem}
-                    </span>
-                  )
-                );
-              })}
+              <span
+                key={index}
+                className={props.isPartofSpeech(item.speech_part)}
+              >
+                {item.speech_part}
+              </span>
+              <span className="wordDefinition">
+                {item.definition}
+              </span>
           </div>
         );
       })}

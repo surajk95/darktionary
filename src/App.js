@@ -45,7 +45,19 @@ class App extends React.Component {
             this.setState({ showError: true });
           }
           else {
-            console.log(result);
+            let meanings = result.meanings;
+            let definitions = meanings.map(item => ({
+              definition: item.def,
+              speech_part: item.speech_part
+            }));
+            //console.log(result);
+            let synonyms = [];
+            meanings.map(item =>item.synonyms && item.synonyms.map(synonym=>synonyms.push(synonym)));
+            result = {
+              synonyms,
+              definitions
+            }
+            //console.log(result);
             this.setState({ resultTitle: searchTerm, result, showError: false, searchTerm: '' });
           } 
         })
@@ -95,23 +107,23 @@ class App extends React.Component {
                 </div>
                 <div className="searchContent">
                 {
-                  (this.state.result.SYNONYMS && this.state.result.SYNONYMS.length>0) &&
+                  (this.state.result.synonyms && this.state.result.synonyms.length>0) &&
                   <Synonyms
-                    synonyms={this.state.result.SYNONYMS}
+                    synonyms={this.state.result.synonyms}
                     searchForWord={this.searchForWord}
                   />
                 }
-                {
+                {/* {
                   (this.state.result.ANTONYMS && this.state.result.ANTONYMS.length>0) &&
                   <Antonyms
                     antonyms={this.state.result.ANTONYMS}
                     searchForWord={this.searchForWord}
                   />
-                }
+                } */}
                 {
-                  (this.state.result.MEANINGS && Object.values(this.state.result.MEANINGS) && Object.values(this.state.result.MEANINGS).length>0) &&
+                  (this.state.result.definitions && Object.values(this.state.result.definitions) && Object.values(this.state.result.definitions).length>0) &&
                   <Definitions
-                    meanings={this.state.result.MEANINGS}
+                    meanings={this.state.result.definitions}
                     isPartofSpeech={this.isPartofSpeech}
                   />
                 }
